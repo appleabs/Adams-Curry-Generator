@@ -1,0 +1,1 @@
+# Adams-Curry-Generator
