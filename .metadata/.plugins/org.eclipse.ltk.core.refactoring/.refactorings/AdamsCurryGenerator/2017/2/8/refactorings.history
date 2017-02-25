@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;getCurryButtons&apos; in &apos;uk.curryGenerator.GUI.createAndShowGUI()&apos; to &apos;buttons&apos;&#x0D;&#x0A;- Original project: &apos;AdamsCurryGenerator&apos;&#x0D;&#x0A;- Original element: &apos;uk.curryGenerator.GUI.createAndShowGUI().getCurryButtons&apos;&#x0D;&#x0A;- Renamed element: &apos;getCurryButtons&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;getCurryButtons&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;uk.curryGenerator{GUI.java[GUI~createAndShowGUI@getCurryButtons!1306!1361!1313!1327!QJPanel;!0!false" name="buttons" references="true" stamp="1488057199073" version="1.0"/>
+</session>

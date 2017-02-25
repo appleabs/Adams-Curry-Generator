@@ -29,7 +29,8 @@ public class GUI {
 		//Initialise the different panels needed for the frame
 		JPanel titleAndDescriptionPanel = new JPanel(new BorderLayout());
 		JPanel pictureSpace = new JPanel(new BorderLayout());
-		JPanel buttons = new JPanel(new BorderLayout());
+		JPanel getCurryButtons = new JPanel(new BorderLayout());
+		JPanel recipeGenerationButtons = new JPanel(new BorderLayout());
 		
 		//Set Layout of frame
 		frame.setLayout(new BorderLayout());
@@ -39,20 +40,20 @@ public class GUI {
 		titleAndDescriptionPanel.add(applicationDescription, BorderLayout.SOUTH);
 		pictureSpace.add(adamsHead, BorderLayout.NORTH);
 		pictureSpace.add(curry, BorderLayout.CENTER);
-		buttons.add(getCurry, BorderLayout.NORTH);
-		buttons.add(addIngredients, BorderLayout.CENTER);
-		buttons.add(enterRecipe, BorderLayout.SOUTH);
+		getCurryButtons.add(getCurry, BorderLayout.NORTH);
+		recipeGenerationButtons.add(addIngredients, BorderLayout.EAST);
+		recipeGenerationButtons.add(enterRecipe, BorderLayout.WEST);
 		
 		
 		
 		//Add panels to the frame
 		frame.add(titleAndDescriptionPanel, BorderLayout.NORTH);
 		frame.add(pictureSpace, BorderLayout.CENTER);
-		frame.add(buttons, BorderLayout.SOUTH);
+		frame.add(getCurryButtons, BorderLayout.SOUTH);
+		frame.add(recipeGenerationButtons, BorderLayout.WEST);
 		
 		titleAndDescriptionPanel.setSize(600, 100);
 		pictureSpace.setSize(600, 400);
-		buttons.setSize(600, 100);
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();

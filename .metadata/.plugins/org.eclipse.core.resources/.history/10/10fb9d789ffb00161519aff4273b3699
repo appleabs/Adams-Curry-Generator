@@ -40,8 +40,8 @@ public class GUI {
 		pictureSpace.add(adamsHead, BorderLayout.NORTH);
 		pictureSpace.add(curry, BorderLayout.CENTER);
 		buttons.add(getCurry, BorderLayout.NORTH);
-		buttons.add(addIngredients, BorderLayout.CENTER);
-		buttons.add(enterRecipe, BorderLayout.SOUTH);
+		buttons.add(addIngredients, BorderLayout.EAST);
+		buttons.add(enterRecipe, BorderLayout.WEST);
 		
 		
 		
