@@ -23,18 +23,19 @@ public class GUI {
 		redMenuBar.setPreferredSize(new Dimension(600, 20));
 
 		//Create a label to put in the content pane.
-		JLabel Label = new JLabel("",JLabel.CENTER);
+		JLabel Label = new JLabel();
 		Label.setOpaque(true);
 		Label.setSize(new Dimension(600, 600));
 		
 		JPanel controlPanel = new JPanel();
-		controlPanel.setLayout(new BorderLayout());
+		controlPanel.setLayout(new FlowLayout());
 		
 		JButton getCurryButton = new JButton("Get Curry!");
 		//Set the menu bar and add the label to the content pane.
 		frame.setJMenuBar(redMenuBar);
-		frame.add(Label);
-		frame.add(controlPanel);
+		frame.getContentPane().add(Label, BorderLayout.CENTER);
+		Label.add(controlPanel);
+		frame.getContentPane().add(controlPanel);
 		controlPanel.add(getCurryButton);
 		
 		
