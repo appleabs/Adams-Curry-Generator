@@ -1,0 +1,84 @@
+package uk.curryGenerator;
+/**
+ * Class responsible for generating the GUI.
+ * @author Jenny
+ */
+
+import java.awt.*;
+import javax.swing.*;
+
+public class GUI {
+	//Initialise the GUI for Adams Curry Generator
+	private static void createAndShowGUI() {
+		
+		//Set up components needed in the generator
+		JLabel titleLable = new JLabel("Adams Curry Generator!");
+		JLabel applicationDescription = new JLabel("Welcome to Adam's curry generator! Enter what ingredients you have and we'll generate a "
+				+ "random curry to suit you! If you don't fancy entering ingredients though, you can just get a random curry anyway! If you have a curry"
+				+ "recipe you would like to add, feel free to enter it by clicking the button below. Enjoy your curry eating!");
+		JLabel adamsHead = new JLabel();
+		JLabel curry = new JLabel();
+		JButton getCurry = new JButton("Get Curry!");
+		JButton addIngredients = new JButton("Add Ingredients");
+		JButton enterRecipe = new JButton("Enter Recipe");
+		
+		
+		//Create and set up the window.
+		JFrame frame = new JFrame("Adams Curry Generator");
+		frame.setSize(600, 600);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		//Initialise the different panels needed for the frame
+		JPanel titlesPanel = new JPanel(new BorderLayout());
+		JPanel descriptionPanel = new JPanel(new BorderLayout());
+		JPanel adamsHeadSpace = new JPanel(new BorderLayout());
+		JPanel currySpace = new JPanel(new BorderLayout());
+		JPanel getCurryButtons = new JPanel(new BorderLayout());
+		JPanel recipeGenerationButtons = new JPanel(new BorderLayout());
+		
+		//Set Layout of frame
+		frame.setLayout(new BorderLayout());
+		
+		//Add the components to the panels
+		titlesPanel.add(titleLable, BorderLayout.NORTH);
+		descriptionPanel.add(applicationDescription, BorderLayout.NORTH);
+		adamsHeadSpace.add(adamsHead, BorderLayout.CENTER);
+		currySpace.add(curry, BorderLayout.CENTER);
+		getCurryButtons.add(getCurry, BorderLayout.CENTER);
+		recipeGenerationButtons.add(addIngredients, BorderLayout.SOUTH);
+		recipeGenerationButtons.add(enterRecipe, BorderLayout.SOUTH);
+		
+		
+		/**
+		//Create a label to put in the content pane.
+		JLabel Label = new JLabel("",JLabel.CENTER);
+		Label.setOpaque(true);
+		Label.setSize(new Dimension(600, 600));
+		
+		JPanel controlPanel = new JPanel();
+		controlPanel.setLayout(new BorderLayout());
+		
+		JButton getCurryButton = new JButton("Get Curry!");
+		//Set the menu bar and add the label to the content pane.
+		frame.setJMenuBar(redMenuBar);
+		frame.add(Label);
+		Label.add(controlPanel);
+		controlPanel.add(getCurryButton);
+		*/
+		//Display the window.
+		frame.pack();
+		frame.setVisible(true);
+	}
+
+
+	public static void main(String[] args) {
+		//Schedule a job for the event-dispatching thread:
+		//creating and showing this application's GUI.
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				createAndShowGUI();
+			}
+		});
+	}
+}
+

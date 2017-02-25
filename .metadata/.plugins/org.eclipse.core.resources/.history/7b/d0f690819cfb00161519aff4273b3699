@@ -27,7 +27,8 @@ public class GUI {
 		JFrame frame = new JFrame("Adams Curry Generator");
 
 		//Initialise the different panels needed for the frame
-		JPanel titleAndDescriptionPanel = new JPanel(new BorderLayout());
+		JPanel titlesPanel = new JPanel(new BorderLayout());
+		JPanel descriptionPanel = new JPanel(new BorderLayout());
 		JPanel adamsHeadSpace = new JPanel(new BorderLayout());
 		JPanel currySpace = new JPanel(new BorderLayout());
 		JPanel getCurryButtons = new JPanel(new BorderLayout());
@@ -37,8 +38,8 @@ public class GUI {
 		frame.setLayout(new BorderLayout());
 		
 		//Add the components to the panels
-		titleAndDescriptionPanel.add(titleLable, BorderLayout.NORTH);
-		titleAndDescriptionPanel.add(applicationDescription, BorderLayout.SOUTH);
+		titlesPanel.add(titleLable, BorderLayout.NORTH);
+		descriptionPanel.add(applicationDescription, BorderLayout.CENTER);
 		adamsHeadSpace.add(adamsHead, BorderLayout.NORTH);
 		currySpace.add(curry, BorderLayout.CENTER);
 		getCurryButtons.add(getCurry, BorderLayout.NORTH);
@@ -46,19 +47,37 @@ public class GUI {
 		recipeGenerationButtons.add(enterRecipe, BorderLayout.WEST);
 		
 		
-		
 		//Add panels to the frame
-		frame.add(titleAndDescriptionPanel, BorderLayout.NORTH);
+		frame.add(titlesPanel, BorderLayout.NORTH);
+		frame.add(descriptionPanel, BorderLayout.CENTER);
 		frame.add(adamsHeadSpace, BorderLayout.CENTER);
 		frame.add(currySpace, BorderLayout.CENTER);
 		frame.add(getCurryButtons, BorderLayout.SOUTH);
 		frame.add(recipeGenerationButtons, BorderLayout.SOUTH);
 		
-		titleAndDescriptionPanel.setSize(600, 100);
+		
+		
+		/**
+		//Create a label to put in the content pane.
+		JLabel Label = new JLabel("",JLabel.CENTER);
+		Label.setOpaque(true);
+		Label.setSize(new Dimension(600, 600));
+		
+		JPanel controlPanel = new JPanel();
+		controlPanel.setLayout(new BorderLayout());
+		
+		JButton getCurryButton = new JButton("Get Curry!");
+		//Set the menu bar and add the label to the content pane.
+		frame.setJMenuBar(redMenuBar);
+		frame.add(Label);
+		Label.add(controlPanel);
+		controlPanel.add(getCurryButton);
+		*/
+		//Display the window.
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();
-		frame.setSize(700, 700);
+		frame.setSize(600, 600);
 		frame.setVisible(true);
 	}
 
