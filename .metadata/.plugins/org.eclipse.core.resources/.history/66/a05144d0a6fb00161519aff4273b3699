@@ -9,12 +9,11 @@ import javax.swing.*;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultStyledDocument;
 import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 
 public class GUI {
-	//Initialise the GUI for Adam's Curry Generator
+	//Initialise the GUI for Adams Curry Generator
 	private static void createAndShowGUI() {
 		
 		//Set up the style content and the document
@@ -23,16 +22,16 @@ public class GUI {
 	    try {
 			introduction.insertString(0, "Welcome to Adam's curry generator! Enter what ingredients you have and we'll generate a "
 					+ "random curry to suit you! If you don't fancy entering ingredients though, you can just get a random curry anyway! If you have a curry"
-					+ " recipe you would like to add, feel free to enter it by clicking the button below. Enjoy your curry eating!", null);
+					+ "recipe you would like to add, feel free to enter it by clicking the button below. Enjoy your curry eating!", null);
 		} catch (BadLocationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	    
-	    //Set up the title document
+	    //Set up the title
 	    final DefaultStyledDocument titleWrite = new DefaultStyledDocument(sc);
 	    try {
-			titleWrite.insertString(0, "Adam's Curry Generator!", null);
+			titleWrite.insertString(0, "Adams Curry Generator!", null);
 		} catch (BadLocationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -46,19 +45,10 @@ public class GUI {
 		JButton getCurry = new JButton("Get Curry!");
 		JButton addIngredients = new JButton("Add Ingredients");
 		JButton enterRecipe = new JButton("Enter Recipe");
-		JButton quit = new JButton("Exit");
 		
-		//Disable editing on the text panes
+		//Disable editing on the text pane for the introduction
 		applicationDescription.setEditable(false);
-		title.setEditable(false);
 		
-		 //Adding styling
-		 SimpleAttributeSet attribs = new SimpleAttributeSet();  
-		 StyleConstants.setAlignment(attribs , StyleConstants.ALIGN_CENTER);  
-		 StyleConstants.setBold(attribs, true);
-		 StyleConstants.setFontSize(attribs, 24);
-		 title.setParagraphAttributes(attribs,true);
-		 
 		//Create and set up the window.
 		JFrame frame = new JFrame("Adams Curry Generator");
 
@@ -66,7 +56,7 @@ public class GUI {
 		JPanel titleAndDescriptionPanel = new JPanel(new BorderLayout());
 		JPanel pictureSpace = new JPanel(new BorderLayout());
 		JPanel buttons = new JPanel(new BorderLayout());
-
+		
 		//Set Layout of frame
 		frame.setLayout(new BorderLayout());
 		
@@ -77,9 +67,10 @@ public class GUI {
 		pictureSpace.add(curry, BorderLayout.CENTER);
 		buttons.add(getCurry, BorderLayout.NORTH);
 		buttons.add(addIngredients, BorderLayout.CENTER);
-		buttons.add(enterRecipe, BorderLayout.WEST);
-		buttons.add(quit,BorderLayout.EAST);
-			
+		buttons.add(enterRecipe, BorderLayout.SOUTH);
+		
+		
+		
 		//Add panels to the frame
 		frame.add(titleAndDescriptionPanel, BorderLayout.NORTH);
 		frame.add(pictureSpace, BorderLayout.CENTER);
@@ -89,12 +80,7 @@ public class GUI {
 		titleAndDescriptionPanel.setSize(600, 100);
 		pictureSpace.setSize(600, 400);
 		buttons.setSize(600, 100);
-				
-		//Add sizes to buttons
-		quit.setSize(200, 50);
-		enterRecipe.setSize(200, 50);
-		addIngredients.setSize(200, 50);
-				
+		
 		//Initialising the frame
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();

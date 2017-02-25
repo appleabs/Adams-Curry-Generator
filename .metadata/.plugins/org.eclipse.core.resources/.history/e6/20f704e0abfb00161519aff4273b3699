@@ -66,6 +66,10 @@ public class GUI {
 		JPanel titleAndDescriptionPanel = new JPanel(new BorderLayout());
 		JPanel pictureSpace = new JPanel(new BorderLayout());
 		JPanel buttons = new JPanel(new BorderLayout());
+		
+		//Add sizes to buttons
+		quit.setSize(200, 50);
+		enterRecipe.setSize(200, 50);
 
 		//Set Layout of frame
 		frame.setLayout(new BorderLayout());
@@ -89,11 +93,6 @@ public class GUI {
 		titleAndDescriptionPanel.setSize(600, 100);
 		pictureSpace.setSize(600, 400);
 		buttons.setSize(600, 100);
-				
-		//Add sizes to buttons
-		quit.setSize(200, 50);
-		enterRecipe.setSize(200, 50);
-		addIngredients.setSize(200, 50);
 				
 		//Initialising the frame
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

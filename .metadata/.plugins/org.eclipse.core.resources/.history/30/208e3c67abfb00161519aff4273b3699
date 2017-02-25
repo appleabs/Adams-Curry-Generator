@@ -32,7 +32,7 @@ public class GUI {
 	    //Set up the title document
 	    final DefaultStyledDocument titleWrite = new DefaultStyledDocument(sc);
 	    try {
-			titleWrite.insertString(0, "Adam's Curry Generator!", null);
+			titleWrite.insertString(0, "Adams Curry Generator!", null);
 		} catch (BadLocationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -66,7 +66,7 @@ public class GUI {
 		JPanel titleAndDescriptionPanel = new JPanel(new BorderLayout());
 		JPanel pictureSpace = new JPanel(new BorderLayout());
 		JPanel buttons = new JPanel(new BorderLayout());
-
+		
 		//Set Layout of frame
 		frame.setLayout(new BorderLayout());
 		
@@ -79,7 +79,10 @@ public class GUI {
 		buttons.add(addIngredients, BorderLayout.CENTER);
 		buttons.add(enterRecipe, BorderLayout.WEST);
 		buttons.add(quit,BorderLayout.EAST);
-			
+		
+		
+		
+		
 		//Add panels to the frame
 		frame.add(titleAndDescriptionPanel, BorderLayout.NORTH);
 		frame.add(pictureSpace, BorderLayout.CENTER);
@@ -89,12 +92,7 @@ public class GUI {
 		titleAndDescriptionPanel.setSize(600, 100);
 		pictureSpace.setSize(600, 400);
 		buttons.setSize(600, 100);
-				
-		//Add sizes to buttons
-		quit.setSize(200, 50);
-		enterRecipe.setSize(200, 50);
-		addIngredients.setSize(200, 50);
-				
+		
 		//Initialising the frame
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();

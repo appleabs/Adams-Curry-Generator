@@ -1,0 +1,77 @@
+package uk.curryGenerator;
+/**
+ * Class responsible for generating the GUI.
+ * @author Jenny
+ */
+
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyledDocument;
+
+public class GUI {
+	//Initialise the GUI for Adams Curry Generator
+	private static void createAndShowGUI() {
+		
+		//Set up components needed in the generator
+		JLabel titleLable = new JLabel("Adams Curry Generator!");
+		JTextPane applicationDescription = new JTextPane();
+		JLabel adamsHead = new JLabel();
+		JLabel curry = new JLabel();
+		JButton getCurry = new JButton("Get Curry!");
+		JButton addIngredients = new JButton("Add Ingredients");
+		JButton enterRecipe = new JButton("Enter Recipe");
+		
+		//Add a document to the text pane
+		
+		//Create and set up the window.
+		JFrame frame = new JFrame("Adams Curry Generator");
+
+		//Initialise the different panels needed for the frame
+		JPanel titleAndDescriptionPanel = new JPanel(new BorderLayout());
+		JPanel pictureSpace = new JPanel(new BorderLayout());
+		JPanel buttons = new JPanel(new BorderLayout());
+		
+		//Set Layout of frame
+		frame.setLayout(new BorderLayout());
+		
+		//Add the components to the panels
+		titleAndDescriptionPanel.add(titleLable, BorderLayout.NORTH);
+		titleAndDescriptionPanel.add(applicationDescription, BorderLayout.SOUTH);
+		pictureSpace.add(adamsHead, BorderLayout.NORTH);
+		pictureSpace.add(curry, BorderLayout.CENTER);
+		buttons.add(getCurry, BorderLayout.NORTH);
+		buttons.add(addIngredients, BorderLayout.CENTER);
+		buttons.add(enterRecipe, BorderLayout.SOUTH);
+		
+		
+		
+		//Add panels to the frame
+		frame.add(titleAndDescriptionPanel, BorderLayout.NORTH);
+		frame.add(pictureSpace, BorderLayout.CENTER);
+		frame.add(buttons, BorderLayout.SOUTH);
+		
+		//Set fixed sizes to the panels.
+		titleAndDescriptionPanel.setSize(600, 100);
+		pictureSpace.setSize(600, 400);
+		buttons.setSize(600, 100);
+		
+		//Initialising the frame
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.pack();
+		frame.setSize(700, 700);
+		frame.setVisible(true);
+	}
+
+
+	public static void main(String[] args) {
+		//Schedule a job for the event-dispatching thread:
+		//creating and showing this application's GUI.
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				createAndShowGUI();
+			}
+		});
+	}
+}
+
