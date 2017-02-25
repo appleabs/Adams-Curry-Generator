@@ -13,9 +13,8 @@ public class GUI {
 		//Create and set up the window.
 		JFrame frame = new JFrame("Adams Curry Generator");
 		frame.setSize(600, 600);
-		frame.setLayout(new FlowLayout());
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		//Create the menu bar.  Make it have a red background.
 		JMenuBar redMenuBar = new JMenuBar();
 		redMenuBar.setOpaque(true);
@@ -23,18 +22,19 @@ public class GUI {
 		redMenuBar.setPreferredSize(new Dimension(600, 20));
 
 		//Create a label to put in the content pane.
-		JLabel Label = new JLabel("",JLabel.CENTER);
+		JLabel Label = new JLabel();
 		Label.setOpaque(true);
 		Label.setSize(new Dimension(600, 600));
 		
 		JPanel controlPanel = new JPanel();
-		controlPanel.setLayout(new BorderLayout());
+		controlPanel.setLayout(new FlowLayout());
 		
 		JButton getCurryButton = new JButton("Get Curry!");
 		//Set the menu bar and add the label to the content pane.
 		frame.setJMenuBar(redMenuBar);
-		frame.add(Label);
-		frame.add(controlPanel);
+		frame.getContentPane().add(Label, BorderLayout.CENTER);
+		Label.add(controlPanel);
+		frame.getContentPane().add(controlPanel);
 		controlPanel.add(getCurryButton);
 		
 		

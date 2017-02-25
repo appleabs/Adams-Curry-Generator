@@ -28,7 +28,7 @@ public class GUI {
 		Label.setSize(new Dimension(600, 600));
 		
 		JPanel controlPanel = new JPanel();
-		controlPanel.setLayout(new BorderLayout());
+		controlPanel.setLayout(new FlowLayout());
 		
 		JButton getCurryButton = new JButton("Get Curry!");
 		//Set the menu bar and add the label to the content pane.
