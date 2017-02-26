@@ -64,7 +64,7 @@ public class GUI {
 		adamsHead = new JLabel();
 		curry = new JLabel("", SwingConstants.CENTER);
 		getCurry = new JButton("                Get Curry!");
-		addIngredients = new JButton("Add Ingredients");
+		addIngredients = new JButton("Add Ingredients To Query");
 		enterRecipe = new JButton("Enter Recipe");
 		quit = new JButton("Exit");
 		

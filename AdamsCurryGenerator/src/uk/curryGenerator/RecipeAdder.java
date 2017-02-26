@@ -3,20 +3,39 @@ package uk.curryGenerator;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
+/**
+ * screen for adding a new recipe to the mongo database
+ * @author Jenny
+ * @author thirdratecyberpunk
+ *
+ */
 public class RecipeAdder {
 
+	// frame TODO: improve this documentation
 	private JFrame frame;
+	// label explaining purpose of screen
 	private JLabel title;
+	// label explaining name input
 	private JLabel curryName;
-	private JTextArea usersCurry;
+	// input for name of recipe being entered
+	private JTextArea userCurry;
+	// label explaining checkboxes
 	private JLabel ingredients;
-	private JCheckBox checkBox;
+	// label explaining recipe input
 	private JLabel recipe;
+	// input for steps in making curry
 	private JTextArea userRecipe;
+	// label explaining strength rating
+	private JLabel strength;
+	// input for strength of curry
+	private JTextArea userStrength;
+	// submits given recipe to database
 	private JButton submit;
+	// returns user to the main menu
 	private JButton cancel;
 	
 	public RecipeAdder(){
@@ -24,11 +43,12 @@ public class RecipeAdder {
 		//Set up components for the frame
 		title = new JLabel();
 		curryName = new JLabel("Curry Name:");
-		usersCurry = new JTextArea();
+		userCurry = new JTextArea();
 		ingredients = new JLabel("Ingredients:");
-		//checkBox = new JCheckBox();
 		recipe = new JLabel("Recipe:");
 		userRecipe = new JTextArea();
+		//TODO: replace this with a slider or 5 star rating
+		strength = new JLabel("Strength 1-5");
 		submit = new JButton("Submit");
 		cancel = new JButton("Cancel");
 		
@@ -46,7 +66,7 @@ public class RecipeAdder {
 		//Add components to the top
 		top.add(title, BorderLayout.NORTH);
 		top.add(curryName, BorderLayout.CENTER);
-		top.add(usersCurry, BorderLayout.SOUTH);
+		top.add(userCurry, BorderLayout.SOUTH);
 		
 		//Add components to the middle
 		middle.add(ingredients, BorderLayout.NORTH);
@@ -85,11 +105,15 @@ public class RecipeAdder {
 	class SubmitActionListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e) {
+			// gets the values provided by the user
+			String name = userCurry.getText();
+			ArrayList<String> ingredients = {"Chicken", "Saffron", "Tomatoes"};
+			String steps = userRecipe.getText();
+			int strength = Integer.parseInt(userStrength.getText());
 			//submit the recipe to the database
+			MongoConnector mc = new MongoConnector();
+			mc.addNewRecipe(name, ingredients, steps, strength);
 			frame.dispose();
 		}
-		
-		
 	}
-	
 }
