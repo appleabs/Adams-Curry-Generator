@@ -80,16 +80,17 @@ public class RecipeAdder {
 			frame.dispose();
 		
 	}
-	}
 		
 	class SubmitActionListener implements ActionListener{
 
+		@Override
 		public void actionPerformed(ActionEvent e) {
-			//submit the recipe to the database
-			frame.dispose();
+			// TODO Auto-generated method stub
+			
 		}
 		
 		
 	}
 	
+}
 }

@@ -65,7 +65,6 @@ public class RecipeAdder {
 		
 		//Set the buttons
 		cancel.addActionListener(new CancelActionListener());
-		submit.addActionListener(new SubmitActionListener());
 		
 		//Initialising the frame
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -80,16 +79,6 @@ public class RecipeAdder {
 			frame.dispose();
 		
 	}
-	}
-		
-	class SubmitActionListener implements ActionListener{
-
-		public void actionPerformed(ActionEvent e) {
-			//submit the recipe to the database
-			frame.dispose();
-		}
-		
-		
-	}
 	
+}
 }

@@ -1,8 +1,6 @@
 package uk.curryGenerator;
 
 import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
@@ -63,33 +61,11 @@ public class RecipeAdder {
 		frame.add(middle, BorderLayout.CENTER);
 		frame.add(bottom, BorderLayout.SOUTH);
 		
-		//Set the buttons
-		cancel.addActionListener(new CancelActionListener());
-		submit.addActionListener(new SubmitActionListener());
-		
 		//Initialising the frame
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.pack();
 		frame.setSize(500, 500);
 		frame.setVisible(true);
-	}
-	
-	class CancelActionListener implements ActionListener{
-
-		public void actionPerformed(ActionEvent e) {
-			frame.dispose();
-		
-	}
-	}
-		
-	class SubmitActionListener implements ActionListener{
-
-		public void actionPerformed(ActionEvent e) {
-			//submit the recipe to the database
-			frame.dispose();
-		}
-		
-		
 	}
 	
 }
