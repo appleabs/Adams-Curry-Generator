@@ -1,6 +1,7 @@
 package uk.curryGenerator;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -11,6 +12,14 @@ import java.util.ArrayList;
 
 import javax.swing. *;
 
+/**
+ * popup window which asks the user to enter ingredients to narrow down the curry they receive
+ * TODO: make this window have priority and hide the main window when it appears
+ * TODO: improve documentation
+ * TODO: implement search bar so user can find specific ingredients if there's a lot to add
+ * @author Jenny
+ *
+ */
 public class IngredientsCheckForm {
 
 	private JFrame frame;
@@ -18,6 +27,7 @@ public class IngredientsCheckForm {
 	private ArrayList<JCheckBox> checkBox;
 	private JButton addIngredient;
 	private JButton cancel;
+	private JPanel middle;
 
 	//Set up components for the frame
 	public IngredientsCheckForm(){
@@ -69,16 +79,25 @@ public class IngredientsCheckForm {
 		}
 	}
 
-	//Adds the ingredients to the search, then disposes the frame
+	//Adds the ingredients to the search, then passes the frame 
 	class addIngredientsActionListener implements ActionListener{
 
-		public void actionPerformed(ActionEvent e) {
-			for(JCheckBox element : checkBox){
-				if(element.isSelected()){
-					//Add to search
+		/**
+		 * passes the selected checkboxes to the GUI to send the new
+		 */
+		public ArrayList<String> actionPerformed(ActionEvent e) {
+			ArrayList<String> ingredients = new ArrayList<String>();
+			// checks if any checkboxes are ticked
+			for (Component checkbox : middle.getComponents()) {
+				// this check might be unneeded as the middle should only be checkboxes, but safety 
+				if (checkbox instanceof JCheckBox){
+					if (((AbstractButton) checkbox).isSelected()){
+						ingredients.add( ((AbstractButton) checkbox).getText());
+					}
 				}
 			}
-			frame.dispose();		
+			frame.dispose();	
+			return ingredients;
 		}
 	}
 }
