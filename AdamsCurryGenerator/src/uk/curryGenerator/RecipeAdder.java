@@ -105,11 +105,18 @@ public class RecipeAdder {
 	class SubmitActionListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e) {
-			// gets the values provided by the user
 			String name = userCurry.getText();
-			ArrayList<String> ingredients = {"Chicken", "Saffron", "Tomatoes"};
-			String steps = userRecipe.getText();
+			System.out.println(name);
+			ArrayList<String> ingredients = new ArrayList<String>();
+			ingredients.add("Chicken");
+			ingredients.add("Saffron");
+			ingredients.add("Tomatoes");
+			System.out.print(ingredients);
+			ArrayList<String> steps = new ArrayList<String>();
+			steps.add(userRecipe.getText());
+			System.out.println(steps);
 			int strength = Integer.parseInt(userStrength.getText());
+			System.out.println(strength);
 			//submit the recipe to the database
 			MongoConnector mc = new MongoConnector();
 			mc.addNewRecipe(name, ingredients, steps, strength);

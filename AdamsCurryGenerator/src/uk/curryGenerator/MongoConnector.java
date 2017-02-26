@@ -16,6 +16,7 @@ import com.mongodb.MongoClient;
 /**
  * class responsible for connecting to an instance of a mongo database
  * @author thirdratecyberpunk
+ * TODO: make these methods static to allow use of them without instantiating MongoConnector each time
  *
  */
 public class MongoConnector{
@@ -96,7 +97,7 @@ public class MongoConnector{
 	 * @param steps
 	 * @param strength
 	 */
-	public void addNewRecipe(String name, HashMap<String, Integer> ingredients, ArrayList<String> steps, int strength){
+	public void addNewRecipe(String name, ArrayList<String> ingredients, ArrayList<String> steps, int strength){
 		BasicDBObject newRecipe = new BasicDBObject();
 		newRecipe.put("name", name);
 		newRecipe.put("ingredients", ingredients);
