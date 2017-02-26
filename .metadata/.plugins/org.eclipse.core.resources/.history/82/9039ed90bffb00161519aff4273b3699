@@ -28,14 +28,10 @@ public class GUI {
 	private JButton addIngredients;
 	private JButton enterRecipe;
 	private JButton quit;
-	private MongoConnector mongoConnector;
 	
 	
 	//Initialise the GUI for Adam's Curry Generator
 	public GUI() {
-		
-		//Initialise a mongo connector
-		mongoConnector = new MongoConnector();
 		
 		//Set up the style content and the document
 		StyleContext sc = new StyleContext();
@@ -129,13 +125,13 @@ public class GUI {
 	class CurryActionListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e) {
-			
-			curry.setText((String) mongoConnector.getRandomRecipe().get("name"));			
+			curry.setText("hello");			
 		}
 	}
 
 	public static void main(String[] args) {
-			GUI gui = new GUI();			
-	    }
+		//Schedule a job for the event-dispatching thread:
+		//creating and showing this application's 
+	}
 	}
 
