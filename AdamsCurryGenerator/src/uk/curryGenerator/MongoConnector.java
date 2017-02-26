@@ -86,8 +86,8 @@ public class MongoConnector{
 	 * gets recipes which contain the specified ingredients and returns a random one
 	 * TODO: implement this behaviour
 	 */
-	public void getIngredientRecipe(){
-
+	public void getIngredientRecipe(ArrayList<String> ingredients){
+		
 	}
 
 	/**
