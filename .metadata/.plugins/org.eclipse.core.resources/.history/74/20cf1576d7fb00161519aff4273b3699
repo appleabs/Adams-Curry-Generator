@@ -60,7 +60,7 @@ public class IngredientsCheckForm {
 		
 		//Add actions for the buttons
 		cancel.addActionListener(new CloseActionListener());
-		addIngredient.addActionListener(new addIngredientsActionListener());
+		buttons.addActionListener(new addIngredientsActionListener());
 		
 		//Initialising the frame
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -70,24 +70,19 @@ public class IngredientsCheckForm {
 		
 	}
 	
-	//Closes the frame when the close button is pressed
 	class CloseActionListener implements ActionListener{
 		
-		public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) {
 		frame.dispose();
 	}
 	}
-	
-	//Adds the ingredients to the search, then disposes the frame
+
 	class addIngredientsActionListener implements ActionListener{
 	
 	public void actionPerformed(ActionEvent e) {
-		for(JCheckBox element : checkBox){
-		if(element.isSelected()){
-			//Add to search
-		}
-		}
+		
 		frame.dispose();		
 	}
-	}
 }
+}
+

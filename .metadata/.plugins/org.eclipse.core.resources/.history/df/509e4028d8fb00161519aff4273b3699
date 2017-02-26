@@ -82,12 +82,8 @@ public class IngredientsCheckForm {
 	class addIngredientsActionListener implements ActionListener{
 	
 	public void actionPerformed(ActionEvent e) {
-		for(JCheckBox element : checkBox){
-		if(element.isSelected()){
-			//Add to search
-		}
-		}
+		
 		frame.dispose();		
 	}
-	}
+}
 }

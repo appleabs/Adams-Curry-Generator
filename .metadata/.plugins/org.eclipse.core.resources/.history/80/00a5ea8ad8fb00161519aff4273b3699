@@ -86,8 +86,8 @@ public class IngredientsCheckForm {
 		if(element.isSelected()){
 			//Add to search
 		}
-		}
 		frame.dispose();		
 	}
+}
 	}
 }

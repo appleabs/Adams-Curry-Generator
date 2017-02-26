@@ -35,21 +35,21 @@ public class IngredientsCheckForm {
 		//Initialise the frames layout
 		frame.setLayout(new BorderLayout());
 		
-		//Add the components to the top
+		//Add the components to the panels
 		top.add(instructions);
-		
 		//Dynamicaly create check boxes for ingredients
 		/**
 		 * i=0;
-		 * while(i < ingredients.size()){
-		 * Checkbox individualCheckBox = new Checkbox(ingredients[0]);
-		 * middle.add(individualCheckBox);
-		 * checkBox.add(individualCheckBox);
+		 * while(i < ingredients.length){
+		 * checkBox.add(new CheckBox(ingredients[0]);
 		 * i ++;
 		 * }
 		*/
-		
-		//Adding the components to the buttons
+		int numberOfIngredients = 0;
+		while(numberOfIngredients <= checkBox.size()){
+			
+		}
+		middle.add(checkBox)
 		buttons.add(addIngredient, BorderLayout.WEST);
 		buttons.add(cancel, BorderLayout.EAST);
 		
@@ -60,7 +60,7 @@ public class IngredientsCheckForm {
 		
 		//Add actions for the buttons
 		cancel.addActionListener(new CloseActionListener());
-		addIngredient.addActionListener(new addIngredientsActionListener());
+		buttons.addActionListener(new addIngredientsActionListener());
 		
 		//Initialising the frame
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -70,24 +70,19 @@ public class IngredientsCheckForm {
 		
 	}
 	
-	//Closes the frame when the close button is pressed
 	class CloseActionListener implements ActionListener{
 		
-		public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) {
 		frame.dispose();
 	}
 	}
-	
-	//Adds the ingredients to the search, then disposes the frame
+
 	class addIngredientsActionListener implements ActionListener{
 	
 	public void actionPerformed(ActionEvent e) {
-		for(JCheckBox element : checkBox){
-		if(element.isSelected()){
-			//Add to search
-		}
-		}
+		
 		frame.dispose();		
 	}
-	}
 }
+}
+
