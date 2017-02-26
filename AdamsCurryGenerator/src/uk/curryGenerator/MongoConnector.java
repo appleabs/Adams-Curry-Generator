@@ -49,10 +49,11 @@ public class MongoConnector{
 		// perform query on database
 		DBCursor cursor = ingredients.find();
 		List<DBObject> docs = cursor.toArray();
+		ArrayList<String> ingredientNames = new ArrayList<String>();
 		for (DBObject ingredient: docs){
-			System.out.print(ingredients);
+			ingredientNames.add((String) ingredient.get("name"));
 		}
-		return null;
+		return ingredientNames;
 	}
 
 	/**
