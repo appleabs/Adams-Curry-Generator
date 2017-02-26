@@ -80,7 +80,7 @@ public class GUI {
 		 title.setParagraphAttributes(attribs,true);
 		 
 		//Create and set up the window.
-		JFrame mainFrame = new JFrame("Adams Curry Generator");
+		JFrame frame = new JFrame("Adams Curry Generator");
 
 		//Initialise the different panels needed for the frame
 		JPanel titleAndDescriptionPanel = new JPanel(new BorderLayout());
@@ -88,7 +88,7 @@ public class GUI {
 		JPanel buttons = new JPanel(new BorderLayout());
 
 		//Set Layout of frame
-		mainFrame.setLayout(new BorderLayout());
+		frame.setLayout(new BorderLayout());
 		
 		//Add the components to the panels
 		titleAndDescriptionPanel.add(title, BorderLayout.NORTH);
@@ -101,9 +101,9 @@ public class GUI {
 		buttons.add(quit,BorderLayout.EAST);
 			
 		//Add panels to the frame
-		mainFrame.add(titleAndDescriptionPanel, BorderLayout.NORTH);
-		mainFrame.add(pictureSpace, BorderLayout.CENTER);
-		mainFrame.add(buttons, BorderLayout.SOUTH);
+		frame.add(titleAndDescriptionPanel, BorderLayout.NORTH);
+		frame.add(pictureSpace, BorderLayout.CENTER);
+		frame.add(buttons, BorderLayout.SOUTH);
 		
 		//Set fixed sizes to the panels.
 		titleAndDescriptionPanel.setSize(600, 100);
@@ -118,13 +118,12 @@ public class GUI {
 		//Invoke the needed listeners
 		getCurry.addActionListener(new CurryActionListener());
 		quit.addActionListener(new QuitActionListener());
-		addIngredients.addActionListener(new OpenActionListener());
 		
 		//Initialising the frame
-		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mainFrame.pack();
-		mainFrame.setSize(700, 700);
-		mainFrame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.pack();
+		frame.setSize(700, 700);
+		frame.setVisible(true);
 		
 	}
 	
@@ -144,13 +143,6 @@ public class GUI {
 			System.exit(0);
 		}
 		
-	}
-	
-	class OpenActionListener implements ActionListener{
-		
-		public void actionPerformed(ActionEvent e){
-			IngredientsCheckForm ingredientsCheckForm = new IngredientsCheckForm();
-		}
 	}
 
 	public static void main(String[] args) {

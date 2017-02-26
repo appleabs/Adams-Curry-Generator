@@ -1,0 +1,22 @@
+package uk.curryGenerator;
+
+import javax.swing. *;
+
+public class IngredientsCheckForm {
+	
+	private JFrame frame;
+	private JLabel instructions;
+	private JLabel checkBox;
+	private JButton addIngredient;
+	private JButton cancel;
+	
+	//Set up components for the frame
+	public IngredientsCheckForm(){
+		
+		instructions = new JLabel("Tick the ingredients you want to search for!", SwingConstants.CENTER);
+		checkBox = new JLabel();
+		addIngredient = new JButton("Add Ingredient");
+		cancel = new JButton("Cancel");
+		
+	}
+}

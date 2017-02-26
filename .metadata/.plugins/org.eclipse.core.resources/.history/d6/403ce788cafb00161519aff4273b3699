@@ -62,7 +62,7 @@ public class GUI {
 		title = new JTextPane(titleWrite);
 		applicationDescription = new JTextPane(introduction);
 		adamsHead = new JLabel();
-		curry = new JLabel("", SwingConstants.CENTER);
+		curry = new JLabel("hello", SwingConstants.CENTER);
 		getCurry = new JButton("                Get Curry!");
 		addIngredients = new JButton("Add Ingredients");
 		enterRecipe = new JButton("Enter Recipe");
@@ -80,7 +80,7 @@ public class GUI {
 		 title.setParagraphAttributes(attribs,true);
 		 
 		//Create and set up the window.
-		JFrame mainFrame = new JFrame("Adams Curry Generator");
+		JFrame frame = new JFrame("Adams Curry Generator");
 
 		//Initialise the different panels needed for the frame
 		JPanel titleAndDescriptionPanel = new JPanel(new BorderLayout());
@@ -88,7 +88,7 @@ public class GUI {
 		JPanel buttons = new JPanel(new BorderLayout());
 
 		//Set Layout of frame
-		mainFrame.setLayout(new BorderLayout());
+		frame.setLayout(new BorderLayout());
 		
 		//Add the components to the panels
 		titleAndDescriptionPanel.add(title, BorderLayout.NORTH);
@@ -101,9 +101,9 @@ public class GUI {
 		buttons.add(quit,BorderLayout.EAST);
 			
 		//Add panels to the frame
-		mainFrame.add(titleAndDescriptionPanel, BorderLayout.NORTH);
-		mainFrame.add(pictureSpace, BorderLayout.CENTER);
-		mainFrame.add(buttons, BorderLayout.SOUTH);
+		frame.add(titleAndDescriptionPanel, BorderLayout.NORTH);
+		frame.add(pictureSpace, BorderLayout.CENTER);
+		frame.add(buttons, BorderLayout.SOUTH);
 		
 		//Set fixed sizes to the panels.
 		titleAndDescriptionPanel.setSize(600, 100);
@@ -115,41 +115,22 @@ public class GUI {
 		enterRecipe.setSize(200, 50);
 		addIngredients.setSize(200, 50);
 		
-		//Invoke the needed listeners
+		//Get a curry
 		getCurry.addActionListener(new CurryActionListener());
-		quit.addActionListener(new QuitActionListener());
-		addIngredients.addActionListener(new OpenActionListener());
 		
 		//Initialising the frame
-		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mainFrame.pack();
-		mainFrame.setSize(700, 700);
-		mainFrame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.pack();
+		frame.setSize(700, 700);
+		frame.setVisible(true);
 		
 	}
 	
-	//Gets a random recipe name and adds it to the screen
 	class CurryActionListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e) {
 			
 			curry.setText((String) mongoConnector.getRandomRecipe().get("name"));			
-		}
-	}
-	
-	//Allows you to quit when you press the exit button
-	class QuitActionListener implements ActionListener{
-
-		public void actionPerformed(ActionEvent e) {
-			System.exit(0);
-		}
-		
-	}
-	
-	class OpenActionListener implements ActionListener{
-		
-		public void actionPerformed(ActionEvent e){
-			IngredientsCheckForm ingredientsCheckForm = new IngredientsCheckForm();
 		}
 	}
 
