@@ -1,0 +1,20 @@
+package uk.curryGenerator;
+
+import javax.swing.*;
+
+public class RecipeAdder {
+
+	private JFrame frame;
+	private JLabel title;
+	private JLabel curryName;
+	private JLabel ingredients;
+	private JCheckBox checkBox;
+	private JLabel recipe;
+	private JButton submit;
+	private JButton cancel;
+	
+	public RecipeAdder(){
+		
+	}
+	
+}

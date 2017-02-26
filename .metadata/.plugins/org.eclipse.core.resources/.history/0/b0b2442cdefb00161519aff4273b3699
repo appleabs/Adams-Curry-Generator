@@ -119,7 +119,6 @@ public class GUI {
 		getCurry.addActionListener(new CurryActionListener());
 		quit.addActionListener(new QuitActionListener());
 		addIngredients.addActionListener(new OpenActionListener());
-		enterRecipe.addActionListener(new RecipeAdderActionListener());
 		
 		//Initialising the frame
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -152,14 +151,6 @@ public class GUI {
 		public void actionPerformed(ActionEvent e){
 			IngredientsCheckForm ingredientsCheckForm = new IngredientsCheckForm();
 		}
-	}
-	
-	class RecipeAdderActionListener implements ActionListener{
-
-		public void actionPerformed(ActionEvent e){
-			RecipeAdder recipeAdder = new RecipeAdder();
-		}
-		
 	}
 
 	public static void main(String[] args) {

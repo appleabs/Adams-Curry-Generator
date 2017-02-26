@@ -38,34 +38,6 @@ public class RecipeAdder {
 		JPanel middle = new JPanel(new BorderLayout());
 		JPanel bottom = new JPanel(new BorderLayout());
 		
-		//Initialise the frames layout
-		frame.setLayout(new BorderLayout());
-		
-		//Add components to the top
-		top.add(title, BorderLayout.NORTH);
-		top.add(curryName, BorderLayout.CENTER);
-		top.add(usersCurry, BorderLayout.SOUTH);
-		
-		//Add components to the middle
-		middle.add(ingredients, BorderLayout.NORTH);
-		//middle.add(CheckBox, BorderLayout.CENTER);
-		middle.add(recipe, BorderLayout.SOUTH);
-		
-		//Add components to the bottom
-		bottom.add(userRecipe, BorderLayout.NORTH);
-		bottom.add(submit, BorderLayout.WEST);
-		bottom.add(cancel, BorderLayout.EAST);
-		
-		//Add the panels to the frame
-		frame.add(top, BorderLayout.NORTH);
-		frame.add(middle, BorderLayout.CENTER);
-		frame.add(bottom, BorderLayout.SOUTH);
-		
-		//Initialising the frame
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.pack();
-		frame.setSize(500, 500);
-		frame.setVisible(true);
 	}
 	
 }

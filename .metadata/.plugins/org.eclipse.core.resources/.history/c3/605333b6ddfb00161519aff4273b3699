@@ -60,12 +60,6 @@ public class RecipeAdder {
 		frame.add(top, BorderLayout.NORTH);
 		frame.add(middle, BorderLayout.CENTER);
 		frame.add(bottom, BorderLayout.SOUTH);
-		
-		//Initialising the frame
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.pack();
-		frame.setSize(500, 500);
-		frame.setVisible(true);
 	}
 	
 }
