@@ -25,6 +25,8 @@ public class MongoConnector{
 	DB recipes;
 	// collection of curry recipes
 	DBCollection curries;
+	// collection of ingredients
+	DBCollection ingredients;
 
 	/**
 	 * constructor
@@ -35,8 +37,24 @@ public class MongoConnector{
 		recipes = mongo.getDB("recipes");
 		// defines a collection of curry recipes
 		curries = recipes.getCollection("curries");
+		// defines a collection of ingredients
+		ingredients = recipes.getCollection("ingredients");
 	}
 
+	/**
+	 * returns the contents of the ingredients document as an arraylist
+	 * @return
+	 */
+	public ArrayList<String> getIngredients(){
+		// perform query on database
+		DBCursor cursor = ingredients.find();
+		List<DBObject> docs = cursor.toArray();
+		ArrayList<String> ingredientNames = new ArrayList<String>();
+		for (DBObject ingredient: docs){
+			ingredientNames.add((String) ingredient.get("name"));
+		}
+		return ingredientNames;
+	}
 
 	/**
 	 * gets a random recipe from the database and returns it to the interface as a map
@@ -48,7 +66,7 @@ public class MongoConnector{
 		// BasicDBObject sample = new BasicDBObject("$sample", new BasicDBObject("size", "1"));
 		// get a single recipe from the database
 		// AggregationOutput result = curries.aggregate(sample);
-		
+
 		// current implementation is far less clean but >hackathons >clean code
 		// perform query on database to pull item in this range
 		DBCursor cursor = curries.find();
@@ -65,13 +83,14 @@ public class MongoConnector{
 
 	/*
 	 * gets recipes which contain the specified ingredients and returns a random one
+	 * TODO: implement this behaviour
 	 */
 	public void getIngredientRecipe(){
 
 	}
 
 	/**
-	 * adds a given recipe to the database
+	 * adds a given recipe to the recipe collection
 	 * @param name
 	 * @param ingredients
 	 * @param steps
@@ -84,5 +103,15 @@ public class MongoConnector{
 		newRecipe.put("steps", steps);
 		newRecipe.put("strength", strength);
 		curries.insert(newRecipe);
+	}
+
+	/**
+	 * adds a given ingredient to the ingredients collection
+	 * @param name
+	 */
+	public void addNewIngredient(String name){
+		BasicDBObject newIngredient = new BasicDBObject();
+		newIngredient.put("name", name);
+		ingredients.insert(newIngredient);
 	}
 }

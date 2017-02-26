@@ -36,6 +36,7 @@ public class GUI {
 		
 		//Initialise a mongo connector
 		mongoConnector = new MongoConnector();
+		mongoConnector.getIngredients();
 		
 		//Set up the style content and the document
 		StyleContext sc = new StyleContext();
