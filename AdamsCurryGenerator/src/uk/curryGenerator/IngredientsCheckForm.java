@@ -31,7 +31,8 @@ public class IngredientsCheckForm {
 
 		//Initialise the panels
 		JPanel top = new JPanel(new BorderLayout());
-		JPanel middle = new JPanel(new GridBagLayout());
+		JPanel middle = IngredientsCheckBoxGenerator.ingredientsCheckBox();
+		//JPanel middle = new JPanel(new GridBagLayout());
 		JPanel buttons = new JPanel(new BorderLayout());
 
 		//Initialise the frames layout
@@ -39,21 +40,6 @@ public class IngredientsCheckForm {
 
 		//Add the components to the top
 		top.add(instructions);
-
-		MongoConnector mc = new MongoConnector();
-		//dynamically create check boxes for ingredients
-		int i = 0;
-		GridBagConstraints constraints = new GridBagConstraints();
-		constraints.gridx = 0;
-		ArrayList<String> ingredients = mc.getIngredients();
-		while(i < ingredients.size()){
-			JCheckBox individualCheckBox = new JCheckBox(ingredients.get(i));
-			constraints.gridy = i;
-			middle.add(individualCheckBox, constraints);
-			//checkBox.add(individualCheckBox);
-			i++;
-		}
-
 
 		//Adding the components to the buttons
 		buttons.add(addIngredient, BorderLayout.WEST);

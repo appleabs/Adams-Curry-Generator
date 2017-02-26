@@ -66,7 +66,7 @@ public class GUI {
 		adamsHead.setIcon(iconLogo);
 		curry = new JLabel("", SwingConstants.CENTER);
 		getCurry = new JButton("                Get Curry!");
-		addIngredients = new JButton("Add Ingredients");
+		addIngredients = new JButton("Add Ingredients To Query");
 		enterRecipe = new JButton("Enter Recipe");
 		quit = new JButton("Exit");
 		
