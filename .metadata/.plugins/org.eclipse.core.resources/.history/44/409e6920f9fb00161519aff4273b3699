@@ -1,0 +1,35 @@
+package uk.curryGenerator;
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
+
+public class AdamsHead {
+	
+	private ArrayList<File> heads;
+	private File happyHead;
+	private File veryHappyHead;
+	private File confusedHead;
+	private File rageHead;
+	
+	
+	public AdamsHead(){
+		happyHead = new File("Adams heads/HappyAdam");
+		
+		BufferedImage head = null; 
+		File f = null;
+		
+		try{
+			f = new File(file);
+			head = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+			head = ImageIO.read(f);
+		}catch(IOException e){
+			System.out.println("Error: "+e);
+		}
+	}
+	
+}

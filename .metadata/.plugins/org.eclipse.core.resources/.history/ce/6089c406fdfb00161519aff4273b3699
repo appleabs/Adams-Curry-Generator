@@ -62,7 +62,7 @@ public class GUI {
 		title = new JTextPane(titleWrite);
 		applicationDescription = new JTextPane(introduction);
 		ImageIcon iconLogo = new ImageIcon("Adams Heads/ModeratelyHappyAdam");
-		adamsHead = new JLabel(iconLogo);
+		adamsHead = new JLabel();
 		adamsHead.setIcon(iconLogo);
 		curry = new JLabel("", SwingConstants.CENTER);
 		getCurry = new JButton("                Get Curry!");
