@@ -1,6 +1,7 @@
 package uk.curryGenerator;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -8,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
+import javax.swing.plaf.ComponentUI;
 
 /**
  * screen for adding a new recipe to the mongo database
@@ -39,6 +41,8 @@ public class RecipeAdder {
 	private JButton submit;
 	// returns user to the main menu
 	private JButton cancel;
+	// panel containing ingredients
+	private JPanel middle;
 	
 	public RecipeAdder(){
 		
@@ -61,7 +65,7 @@ public class RecipeAdder {
 		
 		//Set up the panels from the components
 		JPanel top = new JPanel(new BorderLayout());
-		JPanel middle = IngredientsCheckBoxGenerator.ingredientsCheckBox();
+		middle = IngredientsCheckBoxGenerator.ingredientsCheckBox();
 		JPanel bottom = new JPanel(new GridBagLayout());
 		
 		//Initialise the frames layout
@@ -124,6 +128,17 @@ public class RecipeAdder {
 			ingredients.add("Chicken");
 			ingredients.add("Saffron");
 			ingredients.add("Tomatoes");
+			
+			// checks if any checkboxes are ticked
+			for (JCheckBox checkbox : middle.getComponents()) {
+				// this check might be unneeded as the middle should only be checkboxes, but safety 
+			    if (checkbox instanceof JCheckBox){
+			    	if (checkbox.isSelected()){
+			    		System.out.println(checkbox);
+			    	}
+			    }
+			}
+			
 			System.out.print(ingredients);
 			ArrayList<String> steps = new ArrayList<String>();
 			steps.add(userRecipe.getText());

@@ -22,7 +22,7 @@ public class IngredientsCheckForm {
 	//Set up components for the frame
 	public IngredientsCheckForm(){
 
-		instructions = new JLabel("Tick the ingredients you want to search for!", SwingConstants.CENTER);
+		instructions = new JLabel("Tick the ingredients you want to include in your recipe!", SwingConstants.CENTER);
 		addIngredient = new JButton("Add Ingredient");
 		cancel = new JButton("Cancel");
 
@@ -32,7 +32,6 @@ public class IngredientsCheckForm {
 		//Initialise the panels
 		JPanel top = new JPanel(new BorderLayout());
 		JPanel middle = IngredientsCheckBoxGenerator.ingredientsCheckBox();
-		//JPanel middle = new JPanel(new GridBagLayout());
 		JPanel buttons = new JPanel(new BorderLayout());
 
 		//Initialise the frames layout
