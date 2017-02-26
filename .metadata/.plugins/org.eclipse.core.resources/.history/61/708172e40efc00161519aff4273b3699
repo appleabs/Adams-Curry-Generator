@@ -71,9 +71,9 @@ public class GUI {
 		/**try {
 			BufferedImage myPicture;
 			myPicture = ImageIO.read(new File("adamsFury.jpg"));
-			System.out.println("Finding the file!"); */
-			JLabel adamsHead = new JLabel();
-		/**	System.out.println("Displaying the image!");
+			System.out.println("Finding the file!");
+			JLabel adamsHead = new JLabel(new ImageIcon(myPicture));
+			System.out.println("Displaying the image!");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}*/

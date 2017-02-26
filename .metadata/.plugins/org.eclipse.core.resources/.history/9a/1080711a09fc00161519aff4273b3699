@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -66,18 +65,9 @@ public class GUI {
 		title = new JTextPane(titleWrite);
 		applicationDescription = new JTextPane(introduction);
 		//(new File(")");
-		//adamsHead = new JLabel();
-		
-		/**try {
-			BufferedImage myPicture;
-			myPicture = ImageIO.read(new File("adamsFury.jpg"));
-			System.out.println("Finding the file!"); */
-			JLabel adamsHead = new JLabel();
-		/**	System.out.println("Displaying the image!");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}*/
-		
+		ImageIcon adam = new ImageIcon("ModeratelyHappyAdam.jpg");
+		adamsHead = new JLabel();
+		adamsHead.setIcon(adam);
 		curry = new JLabel("", SwingConstants.CENTER);
 		getCurry = new JButton("                Get Curry!");
 		addIngredients = new JButton("Add Ingredients To Query");
@@ -128,7 +118,7 @@ public class GUI {
 		//Add sizes to buttons
 		quit.setSize(200, 50);
 		enterRecipe.setSize(200, 50);
-		addIngredients.setSize(200, 50);	
+		addIngredients.setSize(200, 50);
 		
 		//Invoke the needed listeners
 		getCurry.addActionListener(new CurryActionListener());
