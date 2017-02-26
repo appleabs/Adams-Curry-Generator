@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -23,7 +24,7 @@ import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 
 public class GUI {
-	
+
 	private JTextPane title;
 	private JTextPane applicationDescription;
 	private JLabel adamsHead;
@@ -33,18 +34,20 @@ public class GUI {
 	private JButton enterRecipe;
 	private JButton quit;
 	private MongoConnector mongoConnector;
-	
-	
+	// low cohesion way of doing this but awkward to work around separate window for ingredient searching
+	private ArrayList<String> ingredients;
+
+
 	//Initialise the GUI for Adam's Curry Generator
 	public GUI() {
-		
+
 		//Initialise a mongo connector
 		mongoConnector = new MongoConnector();
-		
+
 		//Set up the style content and the document
 		StyleContext sc = new StyleContext();
-	    final DefaultStyledDocument introduction = new DefaultStyledDocument(sc);
-	    try {
+		final DefaultStyledDocument introduction = new DefaultStyledDocument(sc);
+		try {
 			introduction.insertString(0, "Welcome to Adam's curry generator! Enter what ingredients you have and we'll generate a "
 					+ "random curry to suit you! If you don't fancy entering ingredients though, you can just get a random curry anyway! If you have a curry"
 					+ " recipe you would like to add, feel free to enter it by clicking the button below. Enjoy your curry eating!", null);
@@ -52,70 +55,70 @@ public class GUI {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    
-	    //Set up the title document
-	    final DefaultStyledDocument titleWrite = new DefaultStyledDocument(sc);
-	    try {
+
+		//Set up the title document
+		final DefaultStyledDocument titleWrite = new DefaultStyledDocument(sc);
+		try {
 			titleWrite.insertString(0, "Adam's Curry Generator!", null);
 		} catch (BadLocationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		//Set up components needed in the generator
 		title = new JTextPane(titleWrite);
 		applicationDescription = new JTextPane(introduction);
 		//(new File(")");
 		//adamsHead = new JLabel();
-		
+
 		/**try {
 			BufferedImage myPicture;
 			myPicture = ImageIO.read(new File("adamsFury.jpg"));
 			System.out.println("Finding the file!"); */
-			JLabel adamsHead = new JLabel();
+		JLabel adamsHead = new JLabel();
 		/**	System.out.println("Displaying the image!");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}*/
-		
+
 		curry = new JLabel("", SwingConstants.CENTER);
 		getCurry = new JButton("                Get Curry!");
 		addIngredients = new JButton("Add Ingredients To Query");
 		enterRecipe = new JButton("Enter Recipe");
-		quit = new JButton("Exit");
-		
+
 		//Disable editing on the text panes
 		applicationDescription.setEditable(false);
 		title.setEditable(false);
-		
-		 //Adding styling
-		 SimpleAttributeSet attribs = new SimpleAttributeSet();  
-		 StyleConstants.setAlignment(attribs , StyleConstants.ALIGN_CENTER);  
-		 StyleConstants.setBold(attribs, true);
-		 StyleConstants.setFontSize(attribs, 24);
-		 title.setParagraphAttributes(attribs,true);
-		 
+
+		//Adding styling
+		SimpleAttributeSet attribs = new SimpleAttributeSet();  
+		StyleConstants.setAlignment(attribs , StyleConstants.ALIGN_CENTER);  
+		StyleConstants.setBold(attribs, true);
+		StyleConstants.setFontSize(attribs, 24);
+		title.setParagraphAttributes(attribs,true);
+
 		//Create and set up the window.
-		JFrame mainFrame = new JFrame("Adams Curry Generator");
+		JFrame mainFrame = new JFrame("Adam's Curry Generator");
 
 		//Initialise the different panels needed for the frame
 		JPanel titleAndDescriptionPanel = new JPanel(new BorderLayout());
-		JPanel pictureSpace = new JPanel(new BorderLayout());
+		JPanel pictureSpace = new JPanel(new GridBagLayout());
 		JPanel buttons = new JPanel(new BorderLayout());
+		JButton quit = new JButton("Exit");
 
 		//Set Layout of frame
 		mainFrame.setLayout(new BorderLayout());
-		
+
 		//Add the components to the panels
 		titleAndDescriptionPanel.add(title, BorderLayout.NORTH);
 		titleAndDescriptionPanel.add(applicationDescription, BorderLayout.SOUTH);
-		pictureSpace.add(adamsHead, BorderLayout.NORTH);
-		pictureSpace.add(curry, BorderLayout.CENTER);
+		//pictureSpace.add(adamsHead, BorderLayout.NORTH);
+		//pictureSpace.add(curry, BorderLayout.CENTER);
 		buttons.add(getCurry, BorderLayout.NORTH);
 		buttons.add(addIngredients, BorderLayout.CENTER);
 		buttons.add(enterRecipe, BorderLayout.WEST);
 		buttons.add(quit,BorderLayout.EAST);
-			
+
 		//Add panels to the frame
 		mainFrame.add(titleAndDescriptionPanel, BorderLayout.NORTH);
 		mainFrame.add(pictureSpace, BorderLayout.CENTER);
@@ -124,61 +127,65 @@ public class GUI {
 		titleAndDescriptionPanel.setSize(600, 100);
 		pictureSpace.setSize(600, 400);
 		buttons.setSize(600, 100);
-				
+
 		//Add sizes to buttons
 		quit.setSize(200, 50);
 		enterRecipe.setSize(200, 50);
 		addIngredients.setSize(200, 50);	
-		
+
 		//Invoke the needed listeners
 		getCurry.addActionListener(new CurryActionListener());
 		quit.addActionListener(new QuitActionListener());
 		addIngredients.addActionListener(new OpenActionListener());
 		enterRecipe.addActionListener(new RecipeAdderActionListener());
-		
+
 		//Initialising the frame
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainFrame.pack();
 		mainFrame.setSize(700, 700);
 		mainFrame.setVisible(true);
-		
+
 	}
-	
+
 	//Gets a random recipe name and adds it to the screen
 	class CurryActionListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e) {
-			
 			curry.setText((String) mongoConnector.getRandomRecipe().get("name"));			
 		}
 	}
-	
+
 	//Allows you to quit when you press the exit button
 	class QuitActionListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e) {
 			System.exit(0);
 		}
-		
+
 	}
-	
+
 	class OpenActionListener implements ActionListener{
-		
+
 		public void actionPerformed(ActionEvent e){
 			IngredientsCheckForm ingredientsCheckForm = new IngredientsCheckForm();
 		}
 	}
-	
+
 	class RecipeAdderActionListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e){
 			RecipeAdder recipeAdder = new RecipeAdder();
 		}
-		
+
 	}
 
+	/**
+	 * main method
+	 * @param args
+	 */
 	public static void main(String[] args) {
-			GUI gui = new GUI();			
-	    }
+		GUI gui = new GUI();
+		MongoConnector mc = new MongoConnector();
 	}
+}
 

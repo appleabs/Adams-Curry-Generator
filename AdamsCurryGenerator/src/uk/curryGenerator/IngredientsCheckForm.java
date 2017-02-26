@@ -28,6 +28,7 @@ public class IngredientsCheckForm {
 	private JButton addIngredient;
 	private JButton cancel;
 	private JPanel middle;
+	private JTextArea newIngredient;
 
 	//Set up components for the frame
 	public IngredientsCheckForm(){
@@ -43,6 +44,7 @@ public class IngredientsCheckForm {
 		JPanel top = new JPanel(new BorderLayout());
 		JPanel middle = IngredientsCheckBoxGenerator.ingredientsCheckBox();
 		JPanel buttons = new JPanel(new BorderLayout());
+		JPanel newIngredientFrame = new JPanel(new GridBagLayout());
 
 		//Initialise the frames layout
 		frame.setLayout(new BorderLayout());
@@ -54,14 +56,26 @@ public class IngredientsCheckForm {
 		buttons.add(addIngredient, BorderLayout.WEST);
 		buttons.add(cancel, BorderLayout.EAST);
 
+		newIngredient = new JTextArea(2, 10);
+		JButton newIngredientConfirm = new JButton("Add new ingredient to database");
+
+		GridBagConstraints constraints = new GridBagConstraints();
+		constraints.gridx = 0;
+		constraints.gridy = 0;
+		newIngredientFrame.add(newIngredient);
+		constraints.gridy = 10;
+		newIngredientFrame.add(newIngredientConfirm);
+
 		//Add the Panels to the frame
 		frame.add(top, BorderLayout.NORTH);
 		frame.add(middle, BorderLayout.CENTER);
+		frame.add(newIngredientFrame, BorderLayout.EAST);
 		frame.add(buttons, BorderLayout.SOUTH);
 
 		//Add actions for the buttons
 		cancel.addActionListener(new CloseActionListener());
 		addIngredient.addActionListener(new addIngredientsActionListener());
+		newIngredientConfirm.addActionListener(new newIngredientConfirmListener());
 
 		//Initialising the frame
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -69,6 +83,14 @@ public class IngredientsCheckForm {
 		frame.setSize(500, 500);
 		frame.setVisible(true);
 
+	}
+
+	class newIngredientConfirmListener implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			MongoConnector mc = new MongoConnector();
+			mc.addNewIngredient(newIngredient.getText());
+			System.out.println("Added to database!");
+		}
 	}
 
 	//Closes the frame when the close button is pressed
@@ -79,13 +101,15 @@ public class IngredientsCheckForm {
 		}
 	}
 
-	//Adds the ingredients to the search, then passes the frame 
+	//Closes the frame when the close button is pressed
 	class addIngredientsActionListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			frame.dispose();
+		}
+	}
 
-		/**
-		 * passes the selected checkboxes to the GUI to send the new
-		 */
-		public ArrayList<String> actionPerformed(ActionEvent e) {
+	/*	class addIngredientsActionListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
 			ArrayList<String> ingredients = new ArrayList<String>();
 			// checks if any checkboxes are ticked
 			for (Component checkbox : middle.getComponents()) {
@@ -96,8 +120,7 @@ public class IngredientsCheckForm {
 					}
 				}
 			}
-			frame.dispose();	
-			return ingredients;
+			frame.dispose();
 		}
-	}
+	}*/
 }
